@@ -1,0 +1,108 @@
+*activity_main.xml*
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentBottom="true"
+    tools:ignore="FragmentTagUsage" />
+
+
+*MainActivity.java*
+
+package com.example.exp10;
+
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
+
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.Manifest;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class MainActivity extends FragmentActivity implements OnMapReadyCallback {
+    private GoogleMap mMap;
+    private LatLng latLng;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
+
+        ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        }, PackageManager.PERMISSION_GRANTED);
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        mMap = googleMap;
+
+        LocationListener locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {
+                latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(latLng).title("My position"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+            }
+        };
+
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        try {
+            long MIN_DIST = 5;
+            long MIN_TIME = 1000;
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME, MIN_DIST, locationListener);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+*In local.properties:
+
+
+ MAPS_API_KEY= AIzaSyBhy8HO5H5ZSdg_FFPB7WbdmnxDM8EKZxg
+
+In AndroidManifest.xml:
+
+<meta-data
+    android:name="com.google.android.geo.API_KEY"
+    android:value="AIzaSyBhy8HO5H5ZSdg_FFPB7WbdmnxDM8EKZxg" />
+
+Open your build.gradle (Module: app) file in Android Studio. Add the following lines under the dependencies section:
+implementation 'com.google.android.gms:play-services-maps:17.0.1' 
+implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+*minSDKVersion 34
+
+*viewBinding true in build.gradle
+
+
+
