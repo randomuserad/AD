@@ -1,0 +1,366 @@
+*activity_main.xml(layout)
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/branchFromDialogId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Enter from dialog"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameFromDialogId" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Name:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="STUDENT DETAILS"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Branch:"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameFromDialogId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Enter from dialog"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/fillButtonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:text="FILL INFO"
+        app:layout_constraintBottom_toTopOf="@+id/contextButtonId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/contextButtonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="216dp"
+        android:layout_marginBottom="217dp"
+        android:onClick="openPopup"
+        android:text="Context Menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+*dialog_box.xml(layout)
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="106dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="ENTER DETAILS HERE"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/dialogNameId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/dialogBranchId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Branch"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogNameId" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+*context_menu.xml(menu under res)
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="Preview"
+        android:id="@+id/previewId"
+        android:visible="true"
+        app:showAsAction="never"/>
+    <item android:title="Copy Link"
+        android:id="@+id/copyLinkId"
+        android:visible="true"
+        app:showAsAction="never"/>
+    <item android:title="Delete"
+        android:id="@+id/deleteId"
+        android:visible="true"
+        app:showAsAction="never"/>
+
+</menu>
+
+
+
+*options_menu.xml(menu under res)
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/settingsId"
+        android:title="Settings"
+        android:visible="true"
+        app:showAsAction="never"
+        android:iconTint="@color/black"/>
+    <item
+        android:id="@+id/shareId"
+        android:title="Share"
+        android:visible="true"
+        app:showAsAction="never"
+        android:iconTint="@color/black"/>
+   <item
+        android:id="@+id/aboutUsId"
+        android:title="About Us"
+        android:visible="true"
+        app:showAsAction="never"
+        android:iconTint="@color/black"/>
+
+
+</menu>
+
+
+
+
+*MainActivity.java
+
+package com.example.exp5;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements DialogBox.DataTransfer{
+    TextView name,branch;
+
+    //Options Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=(MenuInflater)getMenuInflater();
+        menuInflater.inflate(R.menu.options_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.settingsId) {
+            Toast.makeText(this, "Settings", Toast.LENGTH_LONG).show();
+            return true;
+        } else if (itemId == R.id.shareId) {
+            Toast.makeText(this, "Share", Toast.LENGTH_LONG).show();
+            return true;
+        } else if (itemId == R.id.aboutUsId) {
+            Toast.makeText(this, "About Us", Toast.LENGTH_LONG).show();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    public void openDialog(){
+        DialogBox dialogSetter=new DialogBox();
+        dialogSetter.show(getSupportFragmentManager(),"DIALOG");
+    }
+
+    // Context Menu
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        MenuInflater menuInflater=(MenuInflater)getMenuInflater();
+        menuInflater.inflate(R.menu.context_menu,menu);
+        super.onCreateContextMenu(menu,v,menuInfo);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        return super.onContextItemSelected(item);
+    }
+
+    public void openPopup(View view){
+        PopupMenu popupMenu=new PopupMenu(MainActivity.this,view);
+        popupMenu.inflate(R.menu.context_menu);
+        popupMenu.show();
+
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        name=findViewById(R.id.nameFromDialogId);
+        branch=findViewById(R.id.branchFromDialogId);
+        Button fillInfoButton=findViewById(R.id.fillButtonId);
+        Button contextMenuButton=findViewById(R.id.contextButtonId);
+
+        fillInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+        contextMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPopup(v);
+            }
+        });
+    }
+
+    @Override
+    public void setTextFromDialog(String name, String branch) {
+        this.name.setText(name);
+        this.branch.setText(branch);
+    }
+}
+
+
+
+
+*DialogSetter.java
+
+package com.example.exp5;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDialogFragment;
+
+public class DialogBox extends AppCompatDialogFragment {
+    public interface DataTransfer{
+        public void setTextFromDialog(String name,String branch);
+    }
+    public DataTransfer dataTransfer;
+    public EditText name,branch;
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+        View view=getLayoutInflater().inflate(R.layout.activity_dialog_box,null);
+        name=view.findViewById(R.id.dialogNameId);
+        branch=view.findViewById(R.id.dialogBranchId);
+
+        builder.setView(view).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String nameToPut=name.getText().toString();
+                String branchToPut=branch.getText().toString();
+                dataTransfer.setTextFromDialog(nameToPut,branchToPut);
+            }
+        });
+        return builder.create();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try{
+            dataTransfer=(DataTransfer) context;
+        }catch (Exception e){throw new ClassCastException("");}
+    }
+}
